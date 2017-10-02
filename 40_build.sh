@@ -1,7 +1,9 @@
 #!/bin/bash
+source ${0%/*}/config.sh
 #set -e
-pushd qt5
-make -j10
-make -j10 install
-du -sh ../qt5pi
+
+pushd $QT_SOURCE_DIR
+make -j $JOB_COUNT
+make -j $JOB_COUNT install
+du -sh $QT_OUTPUT_DIR
 popd

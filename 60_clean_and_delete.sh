@@ -1,5 +1,10 @@
 #!/bin/bash
+source ${0%/*}/config.sh
 
-rm -rf qt5host
-rm -rf qt5pi
-rm -rf qt5/config.*
+echo
+echo '---------------------------------'
+echo 'Clean and delete build'
+echo '---------------------------------'
+rm -rf $QT_HOST_DIR
+rm -rf $QT_OUTPUT_DIR
+rm -rf $QT_SOURCE_DIR/config.*

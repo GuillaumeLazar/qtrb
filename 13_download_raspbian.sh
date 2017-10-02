@@ -1,23 +1,23 @@
 #!/bin/bash
-
+source ${0%/*}/config.sh
 set -e
 
 echo
 echo '---------------------------------'
 echo 'Retrieve Raspbian image'
 echo '---------------------------------'
-RASPBIAN_ZIP_NAME=2017-09-07-raspbian-stretch.zip
-RASPBIAN_IMAGE_NAME=2017-09-07-raspbian-stretch.img
-if [ ! $RASPBIAN_ZIP_NAME ] ; then
+pushd $ROOT_DIR
+if [ ! $RASPBIAN_ZIP_FILENAME ] ; then
     echo 'Download image from raspberrypi.org'
-    wget https://downloads.raspberrypi.org/raspbian/images/raspbian-2017-09-08/2017-09-07-raspbian-stretch.zip
+    wget $RASBPIAN_URL
 else
-    echo "$RASPBIAN_ZIP_NAME is downloaded"
+    echo "$RASPBIAN_ZIP_FILENAME is downloaded"
 fi
 
-if [ ! $RASPBIAN_IMAGE_NAME ] ; then
+if [ ! $RASPBIAN_IMG_FILENAME ] ; then
     echo 'Extract image from zile file'
-    unzip $RASPBIAN_IMAGE_NAME
+    unzip $RASPBIAN_IMG_FILENAME
 else
-    echo "$RASPBIAN_IMAGE_NAME is extracted"
+    echo "$RASPBIAN_IMG_FILENAME is extracted"
 fi
+popd

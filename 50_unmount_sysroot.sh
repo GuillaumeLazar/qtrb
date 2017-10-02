@@ -1,10 +1,15 @@
 #!/bin/bash
+source ${0%/*}/config.sh
+set -e
 
-#set -e
+echo
+echo '---------------------------------'
+echo 'Unmount sysroot'
+echo '---------------------------------'
+pushd $ROOT_DIR
+sudo umount $SYSROOT/sys
+sudo umount $SYSROOT/dev
+sudo umount $SYSROOT/proc
 
-sudo umount sysroot/sys
-sudo umount sysroot/dev
-sudo umount sysroot/proc
-
-sudo umount sysroot
+sudo umount $SYSROOT
 sudo losetup -d /dev/loop0
